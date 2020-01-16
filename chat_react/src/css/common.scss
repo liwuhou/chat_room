@@ -1,0 +1,41 @@
+
+// px2rem
+@function rem($size) {
+    @return ($size/75)*1rem;
+}
+
+// 一些小工具
+
+// 正方形
+@mixin square($h){
+    width:$h;
+    height:$h;
+}
+
+// 行高
+@mixin height($h){
+    height:$h;
+    line-height:$h;
+}
+
+// 背景图片
+@mixin m-bg($url){
+    background:url($url) no-repeat center;
+    background-size:100%;
+}
+
+// 黄金三连
+%text{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+}
+
+// 清除浮动
+%clearfix{
+    &::after{
+        content:'';
+        display:block;
+        clear:both;
+    }
+}
