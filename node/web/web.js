@@ -1,3 +1,4 @@
+// 最开始的express，现已废弃，改用koa2框架
 const http = require('http');
 const path = require('path');
 // const queryString = require('querystring');
