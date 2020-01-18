@@ -7,24 +7,31 @@ import './index.scss'
 import {getMsgList} from '../api'
 
 export default class Chat extends React.Component{
-    state = {
-        msgList: [],
-        ownUserName: '',
-        chat_name: ''
+    constructor(props){
+        super(props);
+        this.state = {
+            msgList: [],
+            ownUserName: '',
+            chat_name: ''
+        }
+        this.chatWrapRef = React.createRef();
     }
+    
     async componentDidMount(){
         try {
-            const {data} = await getMsgList();
-            if(data.status === 1){
-                const {msgList, chat_name, ownUserName} = data.data;
+            const {status, data} = await getMsgList();
+            if(status === 1){
+                const {msgList, chat_name, ownUserName} = data;
                 this.setState({
                     msgList,
                     chat_name,
                     ownUserName
+                }, () => {
+                    this.sliderDownNews();
                 })
             }
         } catch (error) {
-            console.error('mkLog: Chat -> componentDidMount -> error', error);
+            console.error(error);
         }
     }
     // 获取消息列表
@@ -40,17 +47,31 @@ export default class Chat extends React.Component{
             />
         ))
     }
+    // 更新msgList的回调
+    onUpdateList = (msgList) => {
+        this.setState({
+            msgList
+        }, () => {
+            this.sliderDownNews();
+        })
+    }
+    // 滑动到最新消息处
+    sliderDownNews = () => {
+        this.chatWrapRef.current.scrollTop = this.chatWrapRef.current.offsetHeight;
+    }
+    
     render(){
         const {ownUserName, chat_name, msgList} = this.state;
         return (
             <div className="chat">
                 <Heading heading={chat_name}/>
-                <div className="chat__content">
+                <div className="chat__content" ref={this.chatWrapRef}>
                     {this.getMessageList(msgList, ownUserName)}
                 </div>
                 <ChatInput
                     ownUserName={ownUserName}
                     chatName={chat_name}
+                    onUpdateMsg={this.onUpdateList}
                 />
             </div>
         )

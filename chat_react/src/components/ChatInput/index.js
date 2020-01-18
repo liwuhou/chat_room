@@ -21,19 +21,22 @@ class ChatInput extends Component {
             chatName,
             userName,
             content
-        }).then(data => {
-            console.log(data);
+        }).then(({data, status}) => {
+            if(status === 1){
+                const {msgList} = data;
+                this.props.onUpdateMsg(msgList);
+                this.setState({
+                    message: ''
+                })
+            }
         }).catch(e => {
             console.error(e);
         })
-        setTimeout(() => {
-            window.history.go(0);
-        }, 10);
     }
     handleChangeMessage = (event) => {
         this.setState({
             message: event.target.value
-        })
+        });
     }
     
     render() { 

@@ -1,26 +1,5 @@
 import React from 'react'
-
-// const formatMillisecond = (time) => {
-//     const now = Date.now();
-//     const diffTime = now - time;
-//     if(diffTime < 60 * 1000){
-//         return `${parseInt(diffTime / 1000, 10)}秒前`;
-//     }else if(diffTime < 60 * 60 * 1000){
-//         return `${parseInt(diffTime / (60 * 1000), 10)}分前`;
-//     }else if(diffTime < 12 * 60 * 60 * 1000){
-//         return `${parseInt(diffTime / (12 * 60 * 60 * 1000), 10)}小时前`
-//     }else{
-//         return Date(time).toLocaleString().replace(/(上午)|(下午).+GMT\+.+/, '');
-//     }
-// }
-
-// export default function MessageTimer({time}){
-//     return (
-//         <div className="message_time">
-//             <p>{formatMillisecond(time)}</p>
-//         </div>
-//     )
-// }
+import {parseTime} from 'utils';
 
 class MessageTimer extends React.Component {
     constructor(props) {
@@ -54,9 +33,11 @@ class MessageTimer extends React.Component {
         }else if(diffTime < 60 * 60 * 1000){
             return `${parseInt(diffTime / (60 * 1000), 10)}分前`;
         }else if(diffTime < 12 * 60 * 60 * 1000){
-            return `${parseInt(diffTime / (60 * 60 * 1000), 10)}小时前`
+            return `${parseInt(diffTime / (60 * 60 * 1000), 10)}小时前`;
+        }else if(diffTime < 30 * 24 * 60 * 60 * 1000){
+            return `${parseInt(diffTime / (24 * 60 * 60 * 1000))}天前`;
         }else{
-            return Date(time).toLocaleString().replace(/(上午)|(下午).+GMT\+.+/, '');
+            return parseTime('M月d日EE HH:mm:ss', time);
         }
     }
     render() { 

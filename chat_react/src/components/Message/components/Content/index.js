@@ -1,5 +1,4 @@
 import React from 'react'
-// import {notice} from '../../../../config'
 
 const getuserIcon = (name = '') => {
     const hasCn = name.match(/[\u4e00-\u9fa5]/g);
