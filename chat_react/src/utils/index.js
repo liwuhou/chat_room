@@ -1,7 +1,14 @@
+// 动态修改titile
+export const changeTitle = (title = '摸鱼俱乐部') => {
+    document.title = title;
+}
+
+// 获取所有数据的类型文本
 export const getDataType = (data) => {
     return Object.prototype.toString.call(data);
 }
 
+// 将时间修改为可展示的时间文本
 export const parseTime = (fmt, time) => {
     const type = getDataType(time);
     time = type.includes('Date') ? time : new Date(time);
