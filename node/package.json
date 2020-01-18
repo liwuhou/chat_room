@@ -1,6 +1,14 @@
 {
+  "name": "chat_room",
+  "version": "1.0.0",
+  "description": "A real-time chat app built with react + koa + mongodb",
+  "main": "index.js",
+  "author": "hugewilliam",
+  "license": "MIT",
   "dependencies": {
+    "glob": "^7.1.6",
     "koa": "^2.11.0",
-    "koa-bodyparser": "^4.2.1"
+    "koa-bodyparser": "^4.2.1",
+    "mongoose": "^5.8.7"
   }
 }

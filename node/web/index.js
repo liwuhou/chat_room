@@ -1,6 +1,8 @@
 const koa2 = require('koa');
 const bodyParser = require('koa-bodyparser');
 const path = require('path');
+// import service from '../service';
+const service = require('../service');
 
 const {
     readFile,
@@ -66,6 +68,10 @@ apiServer.use(async (ctx) => {
     }
 })
 
+// 链接mongodb数据库
+service();
+
+// 启动web服务器
 apiServer.listen(8080, () => {
     console.log('apiServer is running');
 })
