@@ -1,10 +1,10 @@
 import React from 'react'
-import Message from '../components/Message'
-import Heading from '../components/Heading'
-import ChatInput from '../components/ChatInput'
+import Message from '@/components/Message'
+import Heading from '@/components/Heading'
+import ChatInput from '@/components/ChatInput'
 
+import {getMsgList} from '@/api'
 import './index.scss'
-import {getMsgList} from '../api'
 
 export default class Chat extends React.Component{
     constructor(props){

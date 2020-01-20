@@ -1,0 +1,9 @@
+@import '~@/css/common';
+
+.chat__heading{
+    @include height(rem(80));
+    text-align: center;
+    font-size: rem(35);
+    color: #333;
+    background: #fff;
+}

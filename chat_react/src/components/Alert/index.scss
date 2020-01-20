@@ -1,0 +1,49 @@
+@import '~@/css/common';
+
+.alert-cover{
+    @include square(100%);
+    position: fixed;
+    top: 0;left: 0;
+    background: rgba(0, 0, 0, .24);
+    z-index: 1000;
+    .alert{
+        position: absolute;
+        top: 35%;right: 0;left: 0;
+        width: 80%;
+        min-height: rem(300);
+        margin: auto;
+        // padding: rem(15) rem(10);
+        background: #ecf0f1;
+        &__heading{
+            @include height(rem(80));
+            background: #34495e;
+            padding-left: rem(20);
+            color: #ecf0f1;
+        }
+        &__description{
+            padding: rem(55) rem(15);
+            text-align:center;
+            font-size: rem(36);
+        }
+        &__buttons{
+            display: flex;
+            justify-content: center;
+            %btn{
+                width:100%;
+                height: rem(80);
+                border: none;
+                color: #ecf0f1;
+                font-size: rem(32);
+                outline: none;
+            }
+            &_cancel{
+                @extend %btn;
+                background: #9c9c9c;
+            }
+            &_confirm{
+                @extend %btn;
+                background: #1abc9c;
+            }
+        }
+    }
+}
