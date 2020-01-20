@@ -1,0 +1,35 @@
+@import '~@/css/common';
+
+.chat__input{
+    position: absolute;
+    right:0;bottom:0;left:0;
+    display: flex;
+    width:100%;
+    height: rem(80);
+    margin:auto;
+    border-top: rem(2) solid #3296fa;
+    &_white{
+        box-sizing: border-box;
+        width: 80%;
+        padding: rem(22) rem(20);
+        padding-bottom: 0;
+        border: 0;
+        outline: none;
+        background: #ffffff;
+        font-size: rem(32);
+        color:#333;
+        resize: none;
+    }
+    &_btn{
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 20%;
+        border: 0;
+        background: #3296fa;
+        color:#fff;
+        text-align:center;
+        letter-spacing: .25em;
+        outline: none;
+    }
+}

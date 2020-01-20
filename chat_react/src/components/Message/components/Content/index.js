@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.scss';
 
 const getuserIcon = (name = '') => {
     const hasCn = name.match(/[\u4e00-\u9fa5]/g);

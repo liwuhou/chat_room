@@ -1,0 +1,19 @@
+@import '~@/css/common';
+
+.message_time{
+    @include height(rem(36));
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(12);
+    font-size: rem(12);
+    text-align: center;
+    p{
+        display:block;
+        box-sizing: border-box;
+        height: 100%;
+        line-height: rem(36);
+        padding: rem(2) rem(10);
+        background: #f3f3f3;
+        border-radius: rem(5);
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import {parseTime} from 'utils';
+import './index.scss';
 
 class MessageTimer extends React.Component {
     constructor(props) {
