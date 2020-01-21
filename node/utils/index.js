@@ -16,7 +16,8 @@ const writeFile = (path, data) => {
         })
     })
 }
+
 module.exports = {
     readFile,
-    writeFile
+    writeFile,
 }

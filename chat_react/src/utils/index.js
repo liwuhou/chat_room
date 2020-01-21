@@ -46,3 +46,20 @@ export const parseTime = (fmt, time) => {
     }
     return fmt; 
 }
+
+// 获取当前cookie数据对象
+export const getCookieObj = () => {
+    const cookies = document.cookie.split(';');
+    return cookies.reduce((total, cur) => {
+        const [key, value] = cur.split('=');
+        return {
+            ...total,
+            [key]: value
+        }
+    }, {})
+}
+// 获取cookie数据
+export const getCookie = (key) => {
+    const cookies = getCookieObj();
+    return cookies[key];
+}

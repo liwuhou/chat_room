@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
-
+import {getCookie} from 'utils';
 import Login from '@/views/Login';
 import Chat from '@/views/Chat';
 
@@ -9,9 +9,9 @@ export default class Router extends React.Component{
         return (
             <Switch>
                 {/* 登录 */}
-                <Route path="/login" component={Login}/>
+                <Route exact path="/login" component={Login}/>
                 {/* 聊天界面 */}
-                <PrivateRouter path="/chat">
+                <PrivateRouter path="/">
                     <Chat/>
                 </PrivateRouter>
             </Switch>
@@ -25,12 +25,13 @@ function PrivateRouter({children, ...props}){
         <Route
             {...props}
             render={({location}) => {
-                if(/* 有权限 */''){
+                const hasAuthority = getCookie('username');
+                if(hasAuthority){
                     return children;
                 }else{
                     return <Redirect to={{
                         pathname: '/login',
-                        state: {form: location}
+                        state: {from: location}
                     }}/>
                 }
             }}

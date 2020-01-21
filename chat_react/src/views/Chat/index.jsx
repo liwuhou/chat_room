@@ -4,6 +4,7 @@ import Heading from '@/components/Heading'
 import ChatInput from '@/components/ChatInput'
 
 import {getMsgList} from '@/api'
+import { getCookie } from 'utils'
 import './index.scss'
 
 export default class Chat extends React.Component{
@@ -11,21 +12,21 @@ export default class Chat extends React.Component{
         super(props);
         this.state = {
             msgList: [],
-            ownUserName: '',
-            chat_name: ''
+            ownUserName: decodeURI(getCookie('username')),
+            chatName: '摸鱼俱乐部'
         }
         this.chatWrapRef = React.createRef();
     }
     
     async componentDidMount(){
         try {
-            const {status, data} = await getMsgList();
-            if(status === 1){
-                const {msgList, chat_name, ownUserName} = data;
+            const {chatName} = this.state;
+            const res = await getMsgList({chatName});
+            if(res.status === 1){
+                const {msgList, chatName} = res.data;
                 this.setState({
                     msgList,
-                    chat_name,
-                    ownUserName
+                    chatName
                 }, () => {
                     this.sliderDownNews();
                 })
@@ -34,24 +35,27 @@ export default class Chat extends React.Component{
             console.error(error);
         }
     }
-    // 获取消息列表
-    getMessageList = (list, ownUserName) => {
-        return list.map(({id, time, userName, content}, idx) => (
+    // 渲染消息列表
+    renderMessageList = (list, ownUserName) => {
+        return list.map(({_id, time, username, content}, idx) => (
             <Message
-                key={id}
+                key={_id}
                 time={time}
                 content={content}
-                userName={userName}
+                username={username}
                 isShowTime={idx % 4 === 0}
-                isSelf={userName === ownUserName}
+                isSelf={username === ownUserName}
             />
         ))
     }
     // 更新msgList的回调
-    onUpdateList = (msgList) => {
-        this.setState({
-            msgList
-        }, () => {
+    onUpdateList = (message) => {
+        this.setState((preState) => ({
+            msgList: [
+                ...preState.msgList,
+                message
+            ]
+        }), () => {
             this.sliderDownNews();
         })
     }
@@ -61,16 +65,16 @@ export default class Chat extends React.Component{
     }
     
     render(){
-        const {ownUserName, chat_name, msgList} = this.state;
+        const {ownUserName, chatName, msgList} = this.state;
         return (
             <div className="chat">
-                <Heading heading={chat_name}/>
+                <Heading heading={chatName}/>
                 <div className="chat__content" ref={this.chatWrapRef}>
-                    {this.getMessageList(msgList, ownUserName)}
+                    {this.renderMessageList(msgList, ownUserName)}
                 </div>
                 <ChatInput
                     ownUserName={ownUserName}
-                    chatName={chat_name}
+                    chatName={chatName}
                     onUpdateMsg={this.onUpdateList}
                 />
             </div>

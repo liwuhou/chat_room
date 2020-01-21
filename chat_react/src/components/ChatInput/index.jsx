@@ -17,15 +17,15 @@ class ChatInput extends Component {
         const {message: content} = this.state;
         if(content.trim() === '') return;
 
-        const {chatName = '__INVALID_NANE__', ownUserName: userName = '__INVALID_NANE__'} = this.props;
+        const {chatName = '__INVALID_NANE__', ownUserName: username = '__INVALID_NANE__'} = this.props;
         sendMsg({
             chatName,
-            userName,
+            username,
             content
-        }).then(({data, status}) => {
-            if(status === 1){
-                const {msgList} = data;
-                this.props.onUpdateMsg(msgList);
+        }).then((data) => {
+            if(data.status === 1){
+                const {data: message} = data;
+                this.props.onUpdateMsg(message);
                 this.setState({
                     message: ''
                 })

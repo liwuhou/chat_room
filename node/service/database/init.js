@@ -2,12 +2,18 @@ const mongoose = require('mongoose');
 const glob = require('glob');
 const {resolve} = require('path');
 
-const db = "mongodb://localhost:27017/chat";
+const db_url = "mongodb://localhost:27017/chat";
+const options = {
+    keepAlive: 1,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+}
 
 // 链接数据库
 exports.connect = () => {
     // 连接数据库
-    mongoose.connect(db);
+    mongoose.connect(db_url, options);
 
     let maxConnectTimes = 0;
 

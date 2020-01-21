@@ -28,6 +28,7 @@ class MessageTimer extends React.Component {
     
     formatMillisecond = (time) => {
         const now = Date.now();
+        time = new Date(time).valueOf();
         const diffTime = now - time;
         if(diffTime < 60 * 1000){
             return `${parseInt(diffTime / 1000, 10)}秒前`;

@@ -11,11 +11,11 @@ const getuserIcon = (name = '') => {
     }
 }
 
-export default function Content({isSelf, userName, content}){
+export default function Content({isSelf, username, content}){
     return(
         <div className={`message ${isSelf ? 'right' : 'left'}_message`}>
             <div className="user">
-                <span className="user_icon">{getuserIcon(userName)}</span>
+                <span className="user_icon">{getuserIcon(username)}</span>
             </div>
             <div className="content">{content}</div>
         </div>

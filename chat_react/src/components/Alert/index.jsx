@@ -2,9 +2,7 @@ import React from 'react';
 
 import './index.scss';
 
-export default function Alert(props){
-    console.log(props);
-    const {isShow, title = '提示', description = '', confirmText = '好的吧', cancelText = '算了', onConfirm, onCancel = null} = props;
+export default function Alert({isShow, title = '提示', description = '', confirmText = '好的吧', cancelText = '算了', onConfirm, onCancel = null}){
     return (
         <React.Fragment>
             {
