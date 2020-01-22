@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss';
 
-// import {sendMsg} from '../../api'
-
 class ChatInput extends Component {
     constructor(props) {
         super(props);
@@ -16,25 +14,6 @@ class ChatInput extends Component {
     handleClickSendMessage = () => {
         this.props.onsendMsg(this.state.message);
         this.setState({message: ''});
-        // const {message: content} = this.state;
-        // if(content.trim() === '') return;
-
-        // const {chatName = '__INVALID_NANE__', ownUserName: username = '__INVALID_NANE__'} = this.props;
-        // sendMsg({
-        //     chatName,
-        //     username,
-        //     content
-        // }).then((data) => {
-        //     if(data.status === 1){
-        //         const {data: message} = data;
-        //         this.props.onUpdateMsg(message);
-        //         this.setState({
-        //             message: ''
-        //         })
-        //     }
-        // }).catch(e => {
-        //     console.error(e);
-        // })
     }
     handleChangeMessage = (event) => {
         this.setState({

@@ -1,5 +1,4 @@
 export default {
     login: 'api/login',
-    getMsgList: '/api/getMsgList',
-    sendMsg: '/api/sendMsg'
+    getMsgList: '/api/getMsgList'
 }

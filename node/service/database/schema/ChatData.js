@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema; // 声明Schema
 let ObjectId = Schema.Types.ObjectId;
 
@@ -6,7 +7,7 @@ let ObjectId = Schema.Types.ObjectId;
 const chatData = new Schema({
     id: ObjectId,
     username: {unique: false, type: String, required: true},
-    content: {type: String},
+    content: {type: String, default: ''},
     time: {type: Date, default: Date.now()}
 }, {
     collection: 'chatData'

@@ -17,7 +17,12 @@ const writeFile = (path, data) => {
     })
 }
 
+const getRandomId = (mix = '') => {
+    return '' + Date.now() + mix
+}
+
 module.exports = {
     readFile,
     writeFile,
+    getRandomId
 }

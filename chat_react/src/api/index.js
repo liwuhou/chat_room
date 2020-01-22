@@ -13,9 +13,3 @@ export const getMsgList = async (params) => {
     const {data} = await axios.get(URL.getMsgList, params);
     return data;
 }
-
-// 发送信息
-export const sendMsg = async (params) => {
-    const {data} = await axios.post(URL.sendMsg, params);
-    return data;
-}

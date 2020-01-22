@@ -66,18 +66,4 @@ apiRouter.get('/getMsgList', async(ctx) => {
     }
 })
 
-// 发送聊天信息
-apiRouter.post('/sendMsg', async(ctx) => {
-    const ChatData = mongoose.model('ChatData');
-    const {chatName, username, content} = ctx.request.body;
-    const newMessage = new ChatData({username, content});
-    await newMessage.save().then(() => {
-        ctx.body = {
-            status: 1,
-            message: '发送成功！',
-            data: newMessage
-        }
-    })
-})
-
 module.exports = apiRouter;
