@@ -17,7 +17,10 @@ export default function Content({isSelf, username, content}){
             <div className="user">
                 <span className="user_icon">{getuserIcon(username)}</span>
             </div>
-            <div className="content">{content}</div>
+            <div className="speech">
+                <div className="username">{username}</div>
+                <div className="content">{content}</div>
+            </div>
         </div>
     )
 }

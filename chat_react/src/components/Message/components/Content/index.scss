@@ -12,21 +12,26 @@
     .message{
         @extend %clearfix;
         %user{
-            @include square(rem(68));
+            @include square(rem(80));
             position: relative;
             margin: 0 rem(5);
             border-radius: 100%;
             background: #3296fa;
             font-size: rem(26);
-            color:#fff;
-            line-height: rem(68);
+            color:#ecf0f1;
+            line-height: rem(80);
             text-align:center;
             &_icon{
                 position:absolute;
             }
         }
+        %speech{
+            @extend %clearfix;
+            width: 100%;
+        }
         %content{
             margin: 0 rem(8);
+            margin-top: rem(4);
             padding: rem(14) rem(15);
             border-radius: rem(8);
             background: #abcdef;
@@ -38,10 +43,13 @@
                 @extend %user;
                 float: left;
             }
-            .content{
-                @extend %content;
-                float: left;
-                background-color: #eee;
+            .speech{
+                @extend %speech;
+                .content{
+                    @extend %content;
+                    float: left;
+                    background-color: #d8d8d8;
+                }
             }
         }
         &.right_message{
@@ -51,10 +59,13 @@
                 @extend %user;
                 float: right;
             }
-            .content{
-                @extend %content;
-                float: right;
-                background-color: #c9e7ff;
+            .speech{
+                @extend %speech;
+                .content{
+                    @extend %content;
+                    float: right;
+                    background-color: #c9e7ff;
+                }
             }
         }
     }

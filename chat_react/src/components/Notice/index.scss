@@ -1,0 +1,8 @@
+@import '~@/css/common';
+
+.notice_wrap{
+    @include height(rem(50));
+    width: 100%;
+    text-align: center;
+    color: #2c3e50;
+}

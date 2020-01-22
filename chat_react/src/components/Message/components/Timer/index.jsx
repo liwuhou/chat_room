@@ -37,7 +37,7 @@ class MessageTimer extends React.Component {
         }else if(diffTime < 12 * 60 * 60 * 1000){
             return `${parseInt(diffTime / (60 * 60 * 1000), 10)}小时前`;
         }else if(diffTime < 30 * 24 * 60 * 60 * 1000){
-            return `${parseInt(diffTime / (24 * 60 * 60 * 1000))}天前`;
+            return `${Math.round(diffTime / (24 * 60 * 60 * 1000))}天前`;
         }else{
             return parseTime('M月d日EE HH:mm:ss', time);
         }
