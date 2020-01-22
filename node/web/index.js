@@ -5,14 +5,19 @@ const service = require('../service');
 const apiRouter = require('../api');
 const socket = require('socket.io');
 const http = require('http');
+const path = require('path');
 const ws = require('../service/ws');
+const static = require('koa-static');
+
+const home = static(path.join(__dirname, '../build'));
 
 const apiServer = new Koa();
 const server = http.createServer(apiServer.callback());
 const io = socket(server);
 
-const PORT = 8080;
+const PORT = 80;
 
+apiServer.use(home);
 apiServer.use(bodyParser());
 
 // 装载路由
