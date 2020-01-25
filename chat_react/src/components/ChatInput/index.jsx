@@ -24,7 +24,7 @@ class ChatInput extends Component {
     render() { 
         return ( 
             <div className="chat__input">
-                <textarea
+                <input
                     className="chat__input_white"
                     value={this.state.message}
                     onChange={this.handleChangeMessage}
