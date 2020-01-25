@@ -15,7 +15,7 @@ const apiServer = new Koa();
 const server = http.createServer(apiServer.callback());
 const io = socket(server);
 
-const PORT = 80;
+const PORT = 8080;
 
 apiServer.use(home);
 apiServer.use(bodyParser());

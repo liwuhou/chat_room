@@ -32,7 +32,7 @@ export default class Chat extends React.Component{
                 this.setState({
                     msgList,
                     chatName,
-                    socket: io('ws://localhost:8080')
+                    socket: io('ws://liwuhou.cn:8080')
                 }, () => {
                     const {ownUserName: username, chatName} = this.state;
                     // 建立ws连接
