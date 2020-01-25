@@ -3,8 +3,8 @@ import './index.scss';
 
 export default function({content}) {
     return (
-        <div className="notice_wrap">
+        <li className="notice_wrap">
             {content}
-        </div>
+        </li>
     )
 }

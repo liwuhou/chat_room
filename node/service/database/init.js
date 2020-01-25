@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const glob = require('glob');
 const {resolve} = require('path');
 
-const db_url = "mongodb://localhost:27017/chat";
+const db_url = "mongodb://liwuhou.cn:27017/chat";
 const options = {
     keepAlive: 1,
     useUnifiedTopology: true,

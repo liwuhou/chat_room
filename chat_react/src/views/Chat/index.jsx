@@ -20,7 +20,8 @@ export default class Chat extends React.Component{
             socket: null,
             memberCount: 0,
         }
-        this.chatWrapRef = React.createRef();
+        this.messageWrap = React.createRef();
+        this.chatWrap = React.createRef();
     }
     
     async componentDidMount(){
@@ -32,7 +33,7 @@ export default class Chat extends React.Component{
                 this.setState({
                     msgList,
                     chatName,
-                    socket: io('ws://localhost:8080')
+                    socket: io('ws://liwuhou.cn:8080')
                 }, () => {
                     const {ownUserName: username, chatName} = this.state;
                     // 建立ws连接
@@ -101,7 +102,7 @@ export default class Chat extends React.Component{
     }
     // 滑动到最新消息处
     sliderDownNews = () => {
-        this.chatWrapRef.current.scrollTop = this.chatWrapRef.current.offsetHeight;
+        this.chatWrap.current.scrollTop = this.messageWrap.current.offsetHeight;
     }
     
     render(){
@@ -109,8 +110,10 @@ export default class Chat extends React.Component{
         return (
             <div className="chat">
                 <Heading heading={chatName} count={memberCount}/>
-                <div className="chat__content" ref={this.chatWrapRef}>
-                    {this.renderMessageList(msgList, ownUserName)}
+                <div className="chat__content" ref={this.chatWrap}>
+                    <ul ref={this.messageWrap}>
+                        {this.renderMessageList(msgList, ownUserName)}
+                    </ul>
                 </div>
                 <ChatInput
                     onsendMsg={this.sendMsgMethod}
