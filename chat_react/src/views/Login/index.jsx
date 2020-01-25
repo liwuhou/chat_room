@@ -7,7 +7,10 @@ import './index.scss';
 export default class Login extends React.Component{
     constructor(props){
         super(props);
+        // 获取到from信息
+        const {from} = this.props.location.state || {from: {pathname: '/'}}
         this.state = {
+            from,
             username: '',
             password: '',
             AlertProps: {
@@ -16,8 +19,6 @@ export default class Login extends React.Component{
                 description: '',
                 onConfirm: this.onAlertConfirm,
             },
-            // 获取到from信息
-            from: this.props.location.state.from || {pathname: '/'}
         }
         
     }
@@ -35,6 +36,10 @@ export default class Login extends React.Component{
         this.setState({
             password
         })
+    }
+
+    handleKeyUpLogin = (event) => {
+        if(event.keyCode === 13) return this.handleClickSubmitUserData();
     }
 
     // 进入
@@ -88,6 +93,7 @@ export default class Login extends React.Component{
                         id="username" 
                         placeholder="请输入昵称"
                         value={this.state.username}
+                        onKeyUp={this.handleKeyUpLogin}
                         onChange={this.handleChangeUsername}
                     />
                 </div>
@@ -98,6 +104,7 @@ export default class Login extends React.Component{
                         type="password" 
                         placeholder="请输入密码"
                         value={this.state.password} 
+                        onKeyUp={this.handleKeyUpLogin}
                         onChange={this.handleChangePawsword}
                     />
                 </div>

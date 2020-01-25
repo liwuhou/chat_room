@@ -9,7 +9,7 @@ class ChatInput extends Component {
         }
     }
     handleKeyUpMessage = (event) => {
-        if(event.ctrlKey && event.keyCode === 13) this.handleClickSendMessage();
+        if(event.keyCode === 13) this.handleClickSendMessage();
     }
     handleClickSendMessage = () => {
         this.props.onsendMsg(this.state.message);
