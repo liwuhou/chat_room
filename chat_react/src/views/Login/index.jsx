@@ -107,6 +107,11 @@ export default class Login extends React.Component{
                         onKeyUp={this.handleKeyUpLogin}
                         onChange={this.handleChangePawsword}
                     />
+                    <i 
+                        className="login__info"
+                        onClick={() => this.showAlert(`
+                            初次进入将会注册昵称和账号，后续进入只需要输入已注册的账号和口令即可。
+                        `)}></i>
                 </div>
                 <div className="login__submit">
                     <input
