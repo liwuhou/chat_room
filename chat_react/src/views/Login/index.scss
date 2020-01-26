@@ -37,25 +37,21 @@
         }
     }
     &__info{
-        @include square(rem(28));
-        position: relative;
-        top: rem(10);left: rem(18);
+        @include square(rem(36));
         line-height: rem(40);
         display: inline-block;
+        margin-left: rem(8);
         font-style: normal;
         font-size: rem(28);
+        text-align: center;
         color: #ecf0f1;
         background-color: #f39c12;
         border: 1px solid #f39c12;
-        transform: rotate(45deg);
+        border-radius: 50%;
         cursor: pointer;
         user-select: none;
         &::after{
-            content: '?';
-            position: absolute;
-            top:50%;left:50%;
-            transform: rotate(-45deg) translate(45%, -47%);
-            
+            content: '!';
         }
     }
     &__submit{
