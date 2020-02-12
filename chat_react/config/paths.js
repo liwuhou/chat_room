@@ -70,7 +70,7 @@ module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   // appBuild: resolveApp('build'),
-  appBuild: path.resolve(__dirname, '../../node/build'),
+  appBuild: '/data/release/chat',
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),

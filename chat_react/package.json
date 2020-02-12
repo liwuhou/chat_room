@@ -138,5 +138,6 @@
       "react-app"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "homepage": "/chat"
 }

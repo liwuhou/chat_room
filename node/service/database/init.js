@@ -23,7 +23,7 @@ exports.connect = () => {
         mongoose.connection.on('disconnection', () => {
             console.log('***********数据库断开***********');
             if(maxConnectTimes++ < 3){
-                mongoose.connect(db);  
+                mongoose.connect(db_url, options);  
             }else{
                 reject()
                 throw new Error('数据库出现问题，程序无法搞定，请人为修理......');
@@ -34,7 +34,7 @@ exports.connect = () => {
         mongoose.connection.on('error', err => {
             console.log('***********数据库错误***********');
             if(maxConnectTimes++ <3){
-                mongoose.connect(db); 
+                mongoose.connect(db_url, options); 
             }else{
                 reject(err)
                 throw new Error('数据库出现问题，程序无法搞定，请人为修理......');
