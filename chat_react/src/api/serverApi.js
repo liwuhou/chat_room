@@ -1,4 +1,4 @@
 export default {
-    login: 'api/login',
+    login: '/api/login',
     getMsgList: '/api/getMsgList'
 }
